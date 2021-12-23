@@ -1,5 +1,5 @@
-<?php
-  // Set session
+<?php   
+  $errorLogin = isset($_SESSION['error']['login']) ? $_SESSION['error']['login'] : '';
 ?>
 
 <style>
@@ -26,12 +26,17 @@
     <form action="user/login.php" method="POST" class="shadow-sm p-3 bg-body rounded border w-25">
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" id="email" class="form-control" required>
-        <div id="emailHelp" class="form-text">Your email is safe with us 😉</div>
+        <input type="text" name="email" id="email" class="form-control <?php echo isset($errorLogin['email']) ? 'is-invalid' : '' ?>" required>
+        <?php if(isset($errorLogin['email'])){ ?>
+          <div class="invalid-feedback"><?php echo $errorLogin['email']; ?></div>
+        <?php } ?>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" name="password" id="password" class="form-control" required>
+        <input type="password" name="password" id="password" class="form-control <?php echo isset($errorLogin['password']) ? 'is-invalid' : '' ?>" required>
+        <?php if(isset($errorLogin['password'])){ ?>
+          <div class="invalid-feedback"><?php echo $errorLogin['password']; ?></div>
+        <?php } ?>
       </div>
       <div>
         <button type="submit" class="btn btn-primary">Login</button>

@@ -36,7 +36,6 @@
     $ongoing_class_end_time = date_format(($ongoing_class_time)->modify("+2 hour"), "H:i");
     $ongoing_course = $course->getCourse($course->getCourseDetail($ongoing_class['course_detail_id'])['course_id'])['name'];
   }
-  
 ?>
 
 <div class="d-flex">

@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 22, 2021 at 04:53 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Host: localhost
+-- Generation Time: Dec 23, 2021 at 05:00 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -265,24 +265,25 @@ INSERT INTO `material` (`id`, `title`, `video_link`, `attachment`, `session`) VA
 
 CREATE TABLE `organization` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `short_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `organization`
 --
 
-INSERT INTO `organization` (`id`, `name`) VALUES
-(1, 'HIMTI'),
-(2, 'HIMSISFO'),
-(3, 'HIMMAT'),
-(4, 'HIMDKV'),
-(5, 'HIMARS'),
-(6, 'BNCC'),
-(7, 'BNEC'),
-(8, 'BGDC'),
-(9, 'B-VOICE Radio'),
-(10, 'TFISC');
+INSERT INTO `organization` (`id`, `name`, `short_name`) VALUES
+(1, 'Himpunan Mahasiswa Teknik Informatika', 'HIMTI'),
+(2, 'Himpunan Mahasiswa Sistem Informasi', 'HIMSISFO'),
+(3, 'Himpunan Mahasiswa Matematika', 'HIMMAT'),
+(4, 'Himpunan Mahasiswa Desain Komunikasi Visual', 'HIMDKV'),
+(5, 'Himpunan Mahasiswa Arsitek', 'HIMARS'),
+(6, 'Bina Nusantara Computer Club', 'BNCC'),
+(7, 'Bina Nusantara English Club', 'BNEC'),
+(8, 'Binus Game Developer Club', 'BGDC'),
+(9, 'B-VOICE Radio', 'B-VOICE'),
+(10, 'Teach For Indonesia Student Community', 'TFI-SC');
 
 -- --------------------------------------------------------
 

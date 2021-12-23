@@ -52,7 +52,7 @@
     $db = (new Database())->connect();
     $student = new Student($db);
     $teacher = new Teacher($db);
-    
+ 
     $error = [];
 
     if($email == "admin" && $password == "admin") {

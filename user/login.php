@@ -6,7 +6,7 @@
 
 
   if(validateLogin($email, $password)) {
-    $_SESSION['debug'] = 'bisa login';
+    $_SESSION['page'] = 'dashboard';
 
     if(isset($_SESSION['error']['login']))
       unset($_SESSION['error']['login']);

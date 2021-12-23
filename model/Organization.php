@@ -1,14 +1,14 @@
 <?php  
-  class Student {
+  class Organization {
     private $db;
 
     public function __construct(PDO $db) {
       $this->db = $db;
     }
 
-    public function getStudent($first_name, $last_name) {
+    public function getOrganization($organization_id) {
       try {
-        $statement = $this->db->prepare("SELECT * FROM `student` WHERE first_name = '{$first_name}' AND `last_name` = '{$last_name}'");
+        $statement = $this->db->prepare("SELECT * FROM `organization` WHERE id = {$organization_id}");
         $statement->execute();
       } catch(PDOException $e) {
         echo $e;
@@ -17,9 +17,9 @@
       return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
     }
 
-    public function getClassrooms($student_id) {
+    public function getOrganizations($student_id) {
       try {
-        $statement = $this->db->prepare("SELECT * FROM `classroom_detail` WHERE `student_id` = {$student_id}");
+        $statement = $this->db->prepare("SELECT * FROM `organization_detail` WHERE student_id = {$student_id}");
         $statement->execute();
       } catch(PDOException $e) {
         echo $e;

@@ -16,5 +16,27 @@
       }
       return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
     }
+
+    public function getTeacherById($teacher_id) {
+      try {
+        $statement = $this->db->prepare("SELECT * FROM `teacher` WHERE id = {$teacher_id}");
+        $statement->execute();
+      } catch(PDOException $e) {
+        echo $e;
+        return null;
+      }
+      return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
+    }
+
+    public function getClassrooms($teacher_id) {
+      try {
+        $statement = $this->db->prepare("SELECT DISTINCT `classroom_id` FROM `class` WHERE `teacher_id` = {$teacher_id}");
+        $statement->execute();
+      } catch(PDOException $e) {
+        echo $e;
+        return null;
+      }
+      return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
   }
 ?>

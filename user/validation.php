@@ -1,19 +1,13 @@
 <?php 
-
   include("../database/Database.php");
-  include("../model/Student.php");
-  include("../model/Teacher.php");
-
+ 
   function validateEmail($email) {
     
-    // format email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format";
-      echo $emailErr;
       return false;
     }
     
-    // email binus
     if(substr(($email),-11, 5) === "binus") {
       if(substr(($email),-5, 2) == "ac") {
         return true;
@@ -28,17 +22,14 @@
 
   function validatePassword($password, $dob) {
     
-    // cek panjang 
     if(strlen($password) !== 13){
       return false;
     }
 
-    //cek b!Nu5
     if(substr($password, 0, 5) !== "b!Nu$"){
       return false;
     }
 
-    // cek dob
     if(substr($password, 5, 8) !== $dob){
       return false;
     }

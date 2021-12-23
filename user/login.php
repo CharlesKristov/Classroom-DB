@@ -1,5 +1,7 @@
 <?php 
   include("validation.php");
+  include("../model/Student.php");
+  include("../model/Teacher.php");
 
   $email = $_POST['email'];
   $password = $_POST['password'];

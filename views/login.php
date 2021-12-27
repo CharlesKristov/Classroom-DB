@@ -26,16 +26,16 @@
     <form action="user/login.php" method="POST" class="shadow-sm p-3 bg-body rounded border w-25">
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="text" name="email" id="email" class="form-control <?php echo isset($errorLogin['email']) ? 'is-invalid' : '' ?>" required>
+        <input type="text" name="email" id="email" class="form-control <?= isset($errorLogin['email']) ? 'is-invalid' : '' ?>" required>
         <?php if(isset($errorLogin['email'])){ ?>
-          <div class="invalid-feedback"><?php echo $errorLogin['email']; ?></div>
+          <div class="invalid-feedback"><?= $errorLogin['email']; ?></div>
         <?php } ?>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" name="password" id="password" class="form-control <?php echo isset($errorLogin['password']) ? 'is-invalid' : '' ?>" required>
+        <input type="password" name="password" id="password" class="form-control <?= isset($errorLogin['password']) ? 'is-invalid' : '' ?>" required>
         <?php if(isset($errorLogin['password'])){ ?>
-          <div class="invalid-feedback"><?php echo $errorLogin['password']; ?></div>
+          <div class="invalid-feedback"><?= $errorLogin['password']; ?></div>
         <?php } ?>
       </div>
       <div>

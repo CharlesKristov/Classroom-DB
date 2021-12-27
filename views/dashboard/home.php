@@ -28,19 +28,19 @@
     <div class="card bg-light " style="">
       <div class="card-body">
         <div class="mb-3 d-flex justify-content-between align-items-center">
-          <span class="badge rounded-pill px-3 py-2 <?php echo $ongoing_class['type_id'] == 1 ? "bg-primary": "bg-danger"?>"><?php echo $ongoing_class_type?></span>
+          <span class="badge rounded-pill px-3 py-2 <?= $ongoing_class['type_id'] == 1 ? "bg-primary": "bg-danger"?>"><?= $ongoing_class_type?></span>
           <span class="fs-5">⏳ <span class="fw-bold text-secondary">2 Hours</span></span>
         </div>
-        <h5 class="card-title"><?php echo $ongoing_classroom_code?> - <?php echo substr($ongoing_classroom_code,0,3)?></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><?php echo $ongoing_course?></h6>
+        <h5 class="card-title"><?= $ongoing_classroom_code?> - <?= substr($ongoing_classroom_code,0,3)?></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><?= $ongoing_course?></h6>
         <ul class="list-unstyled card-text d-grid gap-2 mt-3">
           <li>
             <span>👩🏻‍🏫</span>
-            <?php echo $ongoing_teacher['first_name']." ".$ongoing_teacher['last_name'];?>
+            <?= $ongoing_teacher['first_name']." ".$ongoing_teacher['last_name'];?>
           </li>
           <li>
             <span>⌚</span>
-            <?php echo $ongoing_class_start_time." - ".$ongoing_class_end_time;?>
+            <?= $ongoing_class_start_time." - ".$ongoing_class_end_time;?>
           </li>
         </ul>
         <a href="#" class="card-link">View Session</a>
@@ -64,8 +64,8 @@
           $title = $current_organization['short_name'];
         ?>
         <li>
-          <p class="fw-bold fs-4 mb-0"><?php echo $title; ?></p>
-          <p class="text-secondary"><?php echo $sub_title; ?></p>
+          <p class="fw-bold fs-4 mb-0"><?= $title; ?></p>
+          <p class="text-secondary"><?= $sub_title; ?></p>
         </li>
       <?php } ?>
     </ul>
@@ -92,10 +92,10 @@
           $clsroom_code = sprintf("%s%02d", strtoupper(substr($classroom->getClassroomType($clsroom['type_id'])['name'], 0, 3)), $clsroom['id']);
         ?>
         <tr>
-          <td scope="row"><?php echo $index + 1;?></td>
-          <td><?php echo $clsroom_code;?></td>
-          <td><?php echo $clsroom['capacity'];?></td>
-          <td><?php echo substr($clsroom_code,0,3)?></td>
+          <td scope="row"><?= $index + 1;?></td>
+          <td><?= $clsroom_code;?></td>
+          <td><?= $clsroom['capacity'];?></td>
+          <td><?= substr($clsroom_code,0,3)?></td>
         </tr>
       <?php }?>
       </tbody>

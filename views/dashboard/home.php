@@ -42,8 +42,8 @@
             <?= $ongoing_class_start_time." - ".$ongoing_class_end_time;?>
           </li>
         </ul>
-        <a href="#" class="card-link">View Session</a>
-        <a href="#" class="card-link">View Course</a>
+        <a href="#" class="badge rounded-pill bg-primary px-3 py-2 card-link link-light text-decoration-none">View Session</a>
+        <a href="#" class="badge rounded-pill bg-primary px-3 py-2 card-link link-light text-decoration-none">View Course</a>
       </div>
     </div>
   </div>

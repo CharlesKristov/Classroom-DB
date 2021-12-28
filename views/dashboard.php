@@ -63,7 +63,7 @@
     <div id="time-now" class="text-secondary fs-6 mb-0"></div>
     <div class="dropdown text-end">
       <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://i.pravatar.cc/32?img=62" alt="avatar" class="rounded-circle">
+        <img src="<?= $role == 'admin' ? 'https://i.pravatar.cc/32'  : $user['avatar'] ?>" alt="avatar" class="rounded-circle">
       </a>
       <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href="user/logout.php">Sign out</a></li>

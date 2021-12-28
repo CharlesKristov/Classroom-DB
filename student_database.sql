@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 23, 2021 at 05:00 PM
+-- Generation Time: Dec 28, 2021 at 08:06 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -33,34 +33,35 @@ CREATE TABLE `class` (
   `teacher_id` int(11) NOT NULL,
   `classroom_id` int(11) NOT NULL,
   `course_detail_id` int(11) NOT NULL,
-  `time` datetime NOT NULL
+  `time` datetime NOT NULL,
+  `zoom_link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `class`
 --
 
-INSERT INTO `class` (`id`, `type_id`, `teacher_id`, `classroom_id`, `course_detail_id`, `time`) VALUES
-(1, 1, 1, 1, 1, '2021-12-01 12:00:00'),
-(2, 1, 1, 2, 1, '2021-12-22 16:30:34'),
-(3, 1, 4, 4, 6, '2021-12-10 15:00:00'),
-(4, 2, 6, 11, 10, '2021-11-13 23:00:00'),
-(5, 2, 10, 1, 5, '2021-12-04 07:00:00'),
-(6, 2, 6, 11, 2, '2021-12-05 14:00:00'),
-(7, 2, 5, 5, 10, '2021-12-22 16:30:34'),
-(8, 2, 9, 2, 7, '2021-12-01 00:00:00'),
-(9, 2, 8, 1, 2, '2021-11-04 10:00:00'),
-(10, 1, 1, 11, 5, '2021-12-11 22:32:16'),
-(11, 2, 8, 3, 8, '2021-11-05 20:00:00'),
-(12, 1, 7, 11, 1, '2021-11-12 13:00:00'),
-(13, 1, 10, 4, 9, '2021-12-25 15:32:38'),
-(14, 2, 10, 2, 10, '2021-12-04 07:32:16'),
-(15, 2, 1, 5, 3, '2021-12-22 16:30:34'),
-(16, 2, 4, 5, 1, '2021-11-25 13:23:34'),
-(17, 1, 6, 11, 3, '2021-11-20 06:39:34'),
-(18, 2, 9, 8, 4, '2021-12-31 04:17:34'),
-(19, 1, 3, 3, 9, '2021-12-05 06:18:05'),
-(20, 2, 1, 6, 10, '2021-12-13 10:39:34');
+INSERT INTO `class` (`id`, `type_id`, `teacher_id`, `classroom_id`, `course_detail_id`, `time`, `zoom_link`) VALUES
+(1, 1, 1, 1, 1, '2021-12-01 12:00:00', 'https://www.youtube.com/'),
+(2, 1, 1, 2, 1, '2021-12-22 16:30:34', 'https://www.youtube.com/'),
+(3, 1, 4, 4, 6, '2021-12-10 15:00:00', 'https://www.youtube.com/'),
+(4, 2, 6, 11, 10, '2021-11-13 23:00:00', 'https://www.youtube.com/'),
+(5, 2, 10, 1, 5, '2021-12-04 07:00:00', 'https://www.youtube.com/'),
+(6, 2, 6, 11, 2, '2021-12-05 14:00:00', 'https://www.youtube.com/'),
+(7, 2, 5, 5, 10, '2021-12-22 16:30:34', 'https://www.youtube.com/'),
+(8, 2, 9, 2, 7, '2021-12-01 00:00:00', 'https://www.youtube.com/'),
+(9, 2, 8, 1, 2, '2021-11-04 10:00:00', 'https://www.youtube.com/'),
+(10, 1, 1, 11, 5, '2021-12-11 22:32:16', 'https://www.youtube.com/'),
+(11, 2, 8, 3, 8, '2021-11-05 20:00:00', 'https://www.youtube.com/'),
+(12, 1, 7, 11, 1, '2021-11-12 13:00:00', 'https://www.youtube.com/'),
+(13, 1, 10, 4, 9, '2021-12-25 15:32:38', 'https://www.youtube.com/'),
+(14, 2, 10, 2, 10, '2021-12-04 07:32:16', 'https://www.youtube.com/'),
+(15, 2, 1, 5, 3, '2021-12-22 16:30:34', 'https://www.youtube.com/'),
+(16, 2, 4, 5, 1, '2021-11-25 13:23:34', 'https://www.youtube.com/'),
+(17, 1, 6, 11, 3, '2021-11-20 06:39:34', 'https://www.youtube.com/'),
+(18, 2, 9, 8, 4, '2021-12-31 04:17:34', 'https://www.youtube.com/'),
+(19, 1, 3, 3, 9, '2021-12-05 06:18:05', 'https://www.youtube.com/'),
+(20, 2, 1, 6, 10, '2021-12-13 10:39:34', 'https://www.youtube.com/');
 
 -- --------------------------------------------------------
 
@@ -246,8 +247,8 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`id`, `title`, `video_link`, `attachment`, `session`) VALUES
-(1, 'Algorithm & Programming', 'https://www.youtube.com/watch?v=Zq4upTEaQyM', '/attachments/2/1/flow-diagrams', 1),
-(2, 'Algorithm & Programming', 'https://www.youtube.com/watch?v=Zq4upTEaQyM', '/attachments/2/2/pseudocode-example', 2),
+(1, 'Flow Diagrams', 'https://www.youtube.com/watch?v=Zq4upTEaQyM', '/attachments/2/1/flow-diagrams', 1),
+(2, 'Pseudocode', 'https://www.youtube.com/watch?v=Zq4upTEaQyM', '/attachments/2/2/pseudocode-example', 2),
 (3, 'Introduction to C Programming I', 'http://binusianorg.sharepoint.com/sites/arc-digitalcontent/_layouts/15/guestaccess.aspx?guestaccesstoken=ARuAe6a%2B4QgSp7KedA1V%2Br8ctMxfzYxIM0j0V%2FS4pko%3D&docid=2_0709fed3b1ae248758d4bd56a3d9a6561&rev=1&e=Yl6efH', '/attachments/2/3/first-c-program', 3),
 (4, 'Logic', 'https://www.youtube.com/watch?v=GN6SW80AP1I', '/attachments/5/1/propotional-logic', 1),
 (5, 'Logic', 'https://www.youtube.com/watch?v=GN6SW80AP1I', '/attachments/5/2/logic-gates', 2),
@@ -332,25 +333,26 @@ CREATE TABLE `student` (
   `id` int(11) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `dob` date NOT NULL
+  `dob` date NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `first_name`, `last_name`, `dob`) VALUES
-(1, 'Charles', 'Christopher', '2002-09-20'),
-(2, 'Oliver', 'Chico', '2002-12-14'),
-(3, 'Made', 'Agustha', '1997-08-01'),
-(4, 'Rio', 'Nathaniel', '1996-10-23'),
-(5, 'Vinsen', 'Nawir', '2001-11-01'),
-(6, 'Jason', 'Harlim', '1997-08-06'),
-(7, 'Edwin', 'Ario', '1999-09-18'),
-(8, 'Rico', 'Susanto', '1999-11-11'),
-(9, 'Gregorrius', 'Emmanuel', '2000-09-09'),
-(10, 'Kevin', 'Nathaniel', '2002-02-01'),
-(11, 'Venicia', 'Setiani', '2002-10-30');
+INSERT INTO `student` (`id`, `first_name`, `last_name`, `dob`, `avatar`) VALUES
+(1, 'Charles', 'Christopher', '2002-09-20', 'https://i.pravatar.cc/32?img=63'),
+(2, 'Oliver', 'Chico', '2002-12-14', 'https://i.pravatar.cc/32?img=64'),
+(3, 'Made', 'Agustha', '1997-08-01', 'https://i.pravatar.cc/32?img=65'),
+(4, 'Rio', 'Nathaniel', '1996-10-23', 'https://i.pravatar.cc/32?img=66'),
+(5, 'Vinsen', 'Nawir', '2001-11-01', 'https://i.pravatar.cc/32?img=67'),
+(6, 'Jason', 'Harlim', '1997-08-06', 'https://i.pravatar.cc/32?img=68'),
+(7, 'Edwin', 'Ario', '1999-09-18', 'https://i.pravatar.cc/32?img=69'),
+(8, 'Rico', 'Susanto', '1999-11-11', 'https://i.pravatar.cc/32?img=70'),
+(9, 'Gregorrius', 'Emmanuel', '2000-09-09', 'https://i.pravatar.cc/32?img=71'),
+(10, 'Kevin', 'Nathaniel', '2002-02-01', 'https://i.pravatar.cc/32?img=72'),
+(11, 'Venicia', 'Setiani', '2002-10-30', 'https://i.pravatar.cc/32?img=73');
 
 -- --------------------------------------------------------
 
@@ -362,24 +364,25 @@ CREATE TABLE `teacher` (
   `id` int(11) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `dob` date NOT NULL
+  `dob` date NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `teacher`
 --
 
-INSERT INTO `teacher` (`id`, `first_name`, `last_name`, `dob`) VALUES
-(1, 'Erich', 'Reeves', '1969-06-08'),
-(2, 'Gannon', 'Stein', '1979-01-04'),
-(3, 'Maxwell', 'Pitts', '1972-11-09'),
-(4, 'Cleo', 'Goodwin', '1973-06-07'),
-(5, 'Cara', 'Pacheco', '1988-05-17'),
-(6, 'Regan', 'Branch', '1977-12-17'),
-(7, 'Natalie', 'Roy', '1972-08-11'),
-(8, 'Hayley', 'Vega', '1970-04-15'),
-(9, 'Melinda', 'Wilkerson', '1975-05-10'),
-(10, 'Gary', 'Carney', '1978-07-05');
+INSERT INTO `teacher` (`id`, `first_name`, `last_name`, `dob`, `avatar`) VALUES
+(1, 'Erich', 'Reeves', '1969-06-08', 'https://i.pravatar.cc/32?img=49'),
+(2, 'Gannon', 'Stein', '1979-01-04', 'https://i.pravatar.cc/32?img=48'),
+(3, 'Maxwell', 'Pitts', '1972-11-09', 'https://i.pravatar.cc/32?img=47'),
+(4, 'Cleo', 'Goodwin', '1973-06-07', 'https://i.pravatar.cc/32?img=46'),
+(5, 'Cara', 'Pacheco', '1988-05-17', 'https://i.pravatar.cc/32?img=45'),
+(6, 'Regan', 'Branch', '1977-12-17', 'https://i.pravatar.cc/32?img=44'),
+(7, 'Natalie', 'Roy', '1972-08-11', 'https://i.pravatar.cc/32?img=43'),
+(8, 'Hayley', 'Vega', '1970-04-15', 'https://i.pravatar.cc/32?img=42'),
+(9, 'Melinda', 'Wilkerson', '1975-05-10', 'https://i.pravatar.cc/32?img=41'),
+(10, 'Gary', 'Carney', '1978-07-05', 'https://i.pravatar.cc/32?img=40');
 
 --
 -- Indexes for dumped tables

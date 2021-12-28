@@ -13,7 +13,7 @@
     global $kelas;
     $class = $kelas->getClass($class['id'], true);
     $classroom_code = sprintf("%s%02d", strtoupper(substr($class['classroom_type'], 0, 3)), $class['classroom_number']); //LEC001
-    return [...$class, 'code' => $classroom_code];    
+    return array_merge($class, array('code' => $classroom_code));
   }, $groupByMonth[$current_month]);
 ?>
 

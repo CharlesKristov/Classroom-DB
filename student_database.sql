@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 28, 2021 at 08:06 AM
+-- Generation Time: Dec 28, 2021 at 11:33 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -61,7 +61,9 @@ INSERT INTO `class` (`id`, `type_id`, `teacher_id`, `classroom_id`, `course_deta
 (17, 1, 6, 11, 3, '2021-11-20 06:39:34', 'https://www.youtube.com/'),
 (18, 2, 9, 8, 4, '2021-12-31 04:17:34', 'https://www.youtube.com/'),
 (19, 1, 3, 3, 9, '2021-12-05 06:18:05', 'https://www.youtube.com/'),
-(20, 2, 1, 6, 10, '2021-12-13 10:39:34', 'https://www.youtube.com/');
+(20, 2, 1, 6, 10, '2021-12-13 10:39:34', 'https://www.youtube.com/'),
+(21, 2, 3, 9, 3, '2021-12-28 09:26:29', 'https://www.youtube.com/'),
+(22, 2, 5, 10, 9, '2021-12-28 09:52:12', 'https://www.youtube.com/');
 
 -- --------------------------------------------------------
 
@@ -249,7 +251,7 @@ CREATE TABLE `material` (
 INSERT INTO `material` (`id`, `title`, `video_link`, `attachment`, `session`) VALUES
 (1, 'Flow Diagrams', 'https://www.youtube.com/watch?v=Zq4upTEaQyM', '/attachments/2/1/flow-diagrams', 1),
 (2, 'Pseudocode', 'https://www.youtube.com/watch?v=Zq4upTEaQyM', '/attachments/2/2/pseudocode-example', 2),
-(3, 'Introduction to C Programming I', 'http://binusianorg.sharepoint.com/sites/arc-digitalcontent/_layouts/15/guestaccess.aspx?guestaccesstoken=ARuAe6a%2B4QgSp7KedA1V%2Br8ctMxfzYxIM0j0V%2FS4pko%3D&docid=2_0709fed3b1ae248758d4bd56a3d9a6561&rev=1&e=Yl6efH', '/attachments/2/3/first-c-program', 3),
+(3, 'Introduction to C Programming I', 'https://www.youtube.com/watch?v=ix5jPkxsr7M', '/attachments/2/3/first-c-program', 3),
 (4, 'Logic', 'https://www.youtube.com/watch?v=GN6SW80AP1I', '/attachments/5/1/propotional-logic', 1),
 (5, 'Logic', 'https://www.youtube.com/watch?v=GN6SW80AP1I', '/attachments/5/2/logic-gates', 2),
 (6, 'Quantifiers', 'https://www.youtube.com/watch?v=Jth7m3j8uGA', '/attachments/5/3/quantifiers', 3),
@@ -477,7 +479,7 @@ ALTER TABLE `teacher`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `classroom`

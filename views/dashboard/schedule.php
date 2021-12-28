@@ -68,7 +68,7 @@
             <?php if($myClass['class_type'] != "Guided Self Learning Class") {?>
               <li>
                 <span >🔗</span>
-                <a href="<?= $myClass['url']?>" target="_blank">Zoom Link</a>
+                <a class="text-decoration-none" href="<?= $myClass['url']?>" target="_blank">Zoom Link</a>
               </li>
             <?php }?>
           </ul>

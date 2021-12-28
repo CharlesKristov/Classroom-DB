@@ -28,6 +28,11 @@
   </head>
 </head>
 <body>
+  <style>
+    a:hover {
+      opacity: 0.5;
+    }
+  </style>
 
    <?php 
     if($page == 'login')

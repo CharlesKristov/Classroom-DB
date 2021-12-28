@@ -2,48 +2,50 @@
 
 A project for DBMS course on Binus University.
 
-## Authors
+## ERD Diagram
 
-- [@CharlesKristov](https://github.com/CharlesKristov)
-- [@agusthas](https://www.github.com/agusthas)
-- [@Oiko78](https://github.com/Oiko78)
+[Lucid Chart -- ERD](https://lucid.app/lucidchart/e803c288-aad0-4268-bbab-7007388bd60f/edit?invitationId=inv_12158997-fda3-4caf-b31f-216c213d051a&page=0_0#)
 
 ## Tech Stack
 
-**Client:** Bootstrap 5
-
-**Server:** PHP
+- Bootstrap 5
+- PHP
+- MySQL
+- Apache
 
 ## Run Locally
 
-Clone the project
+### Start XAMPP(PHP, MySQL, Apache)
+
+- **Windows**: _please read the documentation on how to run it_
+- **Mac**: _please read the documentation on how to run it_
+- **Linux**:
+  ```bash
+  $ sudo /opt/lampp/lampp start
+  ```
+
+### Clone the project
 
 ```bash
   git clone https://github.com/CharlesKristov/DB-WebApp
 ```
 
-**make sure to put the directory where XAMPP can read, usually in `/htdocs`**
+To make life easier, make sure to put the cloned project directory in `htdocs` folder. This can be found in:
 
-Go to the project directory
+- **Windows** : `C:/xampp/htdocs`
+- **Linux** : `/opt/lampp/htdocs`
 
-```bash
-  cd DB-WebApp
-```
+### Database setup
 
-Start XAMPP
+1. Open browser and navigate to `localhost/phpmyadmin`.
+2. Create a new database named `student_database`.
+3. Import [student_database.sql](./student_database.sql) that is included in the project directory to the database.
+4. Make sure every query successfully executed.
 
-- Linux
+Navigate to [localhost/DB-WebApp](http://localhost/DB-WebApp) and login with one of the secrets in [secrets](./.secrets).
 
-```bash
-  sudo /opt/lampp/lampp start
-```
+## Authors
 
-Database
-
-1. Open `localhost/phpmyadmin`.
-2. Create database named `student_database`.
-3. Import the `student_database.sql`.
-
-## ERD Diagram
-
-https://lucid.app/lucidchart/e803c288-aad0-4268-bbab-7007388bd60f/edit?invitationId=inv_12158997-fda3-4caf-b31f-216c213d051a&page=0_0#
+- [@CharlesKristov](https://github.com/CharlesKristov) (Owner)
+- [@agusthas](https://www.github.com/agusthas) (Contributor)
+- [@Oiko78](https://github.com/Oiko78) (Contributor)

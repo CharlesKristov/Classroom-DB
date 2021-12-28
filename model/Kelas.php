@@ -6,13 +6,35 @@
       $this->db = $db;
     }
 
-    public function getClass($class_id) {
+    public function getClass($class_id, $detail = false) {
       try {
-        $statement = $this->db->prepare("SELECT * FROM `class` WHERE id = {$class_id}");
+        $statement = $detail ? 
+        $this->db->prepare(
+          "SELECT 
+          `class`.`time`,
+          `class`.`zoom_link` AS `url`,
+          `class_type`.`name` AS `class_type`,
+          `classroom`.`id` AS `classroom_number`,
+          `classroom_type`.`name` AS `classroom_type`,
+          `course`.`name` AS `course_name`, 
+          `material`.`title` AS `material_title`, 
+          `material`.`session`,
+          CONCAT(`teacher`.`first_name`, ' ', `teacher`.`last_name`) AS `teacher_name`
+          FROM `class` 
+          JOIN `class_type` ON `class`.`type_id` = `class_type`.`id`
+          JOIN `teacher` ON `class`.`teacher_id` = `teacher`.`id`
+          JOIN `classroom` ON `class`.`classroom_id` = `classroom`.`id`
+          JOIN `classroom_type` ON `classroom`.`type_id` = `classroom_type`.`id`
+          JOIN `course_detail` ON `class`.`course_detail_id` = `course_detail`.`id` 
+          JOIN `course` ON `course_detail`.`course_id` = `course`.`id` 
+          JOIN `material` ON `course_detail`.`material_id` = `material`.`id`
+          WHERE `class`.`id` = {$class_id}") : 
+        $this->db->prepare("SELECT * FROM `class` WHERE id = {$class_id}");
+
         $statement->execute();
       } catch (PDOException $e) {
         echo $e;
-        return null;
+        return "error";
       }
       return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
     }
@@ -26,37 +48,6 @@
         return null;
       }
       return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
-    }
-
-    public function getClasses($student_id) {
-      try {
-        $statement = $this->db->prepare("SELECT * FROM `class` JOIN `classroom` ON `class`.`classroom_id` = `classroom`.`id` JOIN classroom_type ON `classroom`.`type_id` = `classroom_type`.`id` JOIN `classroom_detail` ON `classroom`.`id` = `classroom_detail`.`classroom_id` WHERE `student_id` = {$student_id} ORDER BY `time`");
-        $statement->execute();
-      } catch(PDOException $e) {
-        echo $e;
-        return null;
-      }
-      return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function getOngoingClass($student_id) {
-      $classes = $this->getClasses($student_id);
-      $current_class = null;
-      $current_time = new DateTime();
-
-      $minimal = PHP_INT_MAX;
-
-      foreach($classes as $class) {
-        $time = new DateTime($class['time']);
-        $diff = date_diff($current_time, $time);
-        $minutes = $diff->days * 24 * 60 + $diff->h * 60 + $diff->i;
-        if($minutes < $minimal) {
-          $current_class = $class;
-          $minimal = $minutes; 
-        }
-      }
-
-      return $current_class;
     }
   }
 ?>

@@ -38,5 +38,39 @@
       }
       return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getClasses($teacher_id) {
+      try {
+        $statement = $this->db->prepare("SELECT `class`.`id`, `class`.* FROM `class` 
+          WHERE teacher_id = {$teacher_id}
+          ORDER BY `class`.`time` ASC");
+        $statement->execute();
+      } catch(PDOException $e) {
+        echo $e;
+        return null;
+      }
+
+      return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function getOngoingClass($teacher_id) {
+      $classes = $this->getClasses($teacher_id);
+      $current_class = null;
+      $current_time = new DateTime();
+
+      $minimal = PHP_INT_MAX;
+
+      foreach($classes as $class) {
+        $time = new DateTime($class['time']);
+        $diff = date_diff($current_time, $time);
+        $minutes = $diff->days * 24 * 60 + $diff->h * 60 + $diff->i;
+        if($minutes < $minimal) {
+          $current_class = $class;
+          $minimal = $minutes; 
+        }
+      }
+
+      return $current_class;
+    }
   }
 ?>

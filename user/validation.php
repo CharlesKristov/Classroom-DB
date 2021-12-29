@@ -83,4 +83,3 @@
     $_SESSION['user_type'] = $user_type == 0 ? "student" : "teacher";
     return true;
   }
-?>

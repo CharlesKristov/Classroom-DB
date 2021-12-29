@@ -26,4 +26,3 @@
   }
 
   echo "deleted ".json_encode(array_combine($columns, $row))." from table ".$table;
-?>

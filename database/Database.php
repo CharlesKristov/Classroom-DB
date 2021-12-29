@@ -21,4 +21,3 @@
   // $statement = $db->prepare("SELECT * FROM `student`");
   // $statement->execute();
   // echo json_encode($statement->fetchAll(PDO::FETCH_ASSOC));
-?>

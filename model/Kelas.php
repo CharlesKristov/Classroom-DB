@@ -1,14 +1,17 @@
-<?php  
-  class Kelas {
-    private $db;
+<?php
+class Kelas
+{
+  private $db;
 
-    public function __construct(PDO $db) {
-      $this->db = $db;
-    }
+  public function __construct(PDO $db)
+  {
+    $this->db = $db;
+  }
 
-    public function getClass($class_id, $detail = false) {
-      try {
-        $statement = $detail ? 
+  public function getClass($class_id, $detail = false)
+  {
+    try {
+      $statement = $detail ?
         $this->db->prepare(
           "SELECT 
           `class`.`time`,
@@ -28,26 +31,27 @@
           JOIN `course_detail` ON `class`.`course_detail_id` = `course_detail`.`id` 
           JOIN `course` ON `course_detail`.`course_id` = `course`.`id` 
           JOIN `material` ON `course_detail`.`material_id` = `material`.`id`
-          WHERE `class`.`id` = {$class_id}") : 
+          WHERE `class`.`id` = {$class_id}"
+        ) :
         $this->db->prepare("SELECT * FROM `class` WHERE id = {$class_id}");
 
-        $statement->execute();
-      } catch (PDOException $e) {
-        echo $e;
-        return "error";
-      }
-      return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
+      $statement->execute();
+    } catch (PDOException $e) {
+      echo $e;
+      return [];
     }
-
-    public function getClassType($class_type_id) {
-      try {
-        $statement = $this->db->prepare("SELECT * FROM `class_type` WHERE id = {$class_type_id}");
-        $statement->execute();
-      } catch (PDOException $e) {
-        echo $e;
-        return null;
-      }
-      return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
-    }
+    return $statement->fetch(PDO::FETCH_ASSOC);
   }
-?>
+
+  public function getClassType($class_type_id)
+  {
+    try {
+      $statement = $this->db->prepare("SELECT * FROM `class_type` WHERE id = {$class_type_id}");
+      $statement->execute();
+    } catch (PDOException $e) {
+      echo $e;
+      return [];
+    }
+    return $statement->fetch(PDO::FETCH_ASSOC);
+  }
+}

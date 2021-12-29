@@ -1,11 +1,12 @@
-<?php   
-  $errorLogin = isset($_SESSION['error']['login']) ? $_SESSION['error']['login'] : '';
+<?php
+$errorLogin = isset($_SESSION['error']['login']) ? $_SESSION['error']['login'] : '';
 ?>
 
 <style>
   .bg-empty-classroom {
     position: relative;
   }
+
   .bg-empty-classroom::before {
     content: '';
     position: absolute;
@@ -14,7 +15,8 @@
     background-size: cover;
     filter: blur(3px);
   }
-  .bg-empty-classroom > * {
+
+  .bg-empty-classroom>* {
     position: relative;
   }
 </style>
@@ -27,14 +29,14 @@
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="text" name="email" id="email" class="form-control <?= isset($errorLogin['email']) ? 'is-invalid' : '' ?>" required>
-        <?php if(isset($errorLogin['email'])){ ?>
+        <?php if (isset($errorLogin['email'])) { ?>
           <div class="invalid-feedback"><?= $errorLogin['email']; ?></div>
         <?php } ?>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" name="password" id="password" class="form-control <?= isset($errorLogin['password']) ? 'is-invalid' : '' ?>" required>
-        <?php if(isset($errorLogin['password'])){ ?>
+        <?php if (isset($errorLogin['password'])) { ?>
           <div class="invalid-feedback"><?= $errorLogin['password']; ?></div>
         <?php } ?>
       </div>

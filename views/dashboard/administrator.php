@@ -1,22 +1,22 @@
 <?php
+global $db;
+
+$administrator = isset($_SESSION['administrator']) ? 'form' : 'manage';
+
+$statement = $db->prepare("SHOW TABLES");
+$statement->execute();
+$tableNameList = $statement->fetchAll(PDO::FETCH_COLUMN);
+$tableList = array_map(function ($tableName) {
   global $db;
-
-  $administrator = isset($_SESSION['administrator']) ? 'form' : 'manage';
-
-  $statement = $db->prepare("SHOW TABLES");
-  $statement->execute();
-  $tableNameList = $statement->fetchAll(PDO::FETCH_COLUMN);
-  $tableList = array_map(function($tableName) {
-    global $db;
-    try {
-      $statement = $db->prepare("SELECT * FROM `$tableName`");
-      $statement->execute();
-    } catch(PDOException $e) {
-      echo $e;
-      return null;
-    }
-    return [$tableName => $statement->fetchAll(PDO::FETCH_ASSOC)];
-  }, $tableNameList);
+  try {
+    $statement = $db->prepare("SELECT * FROM `$tableName`");
+    $statement->execute();
+  } catch (PDOException $e) {
+    echo $e;
+    return null;
+  }
+  return [$tableName => $statement->fetchAll(PDO::FETCH_ASSOC)];
+}, $tableNameList);
 ?>
 
 <style>
@@ -24,4 +24,4 @@
     overflow-x: auto;
   }
 </style>
-<?php include("administrator/$administrator.php");?>
+<?php include("administrator/$administrator.php"); ?>

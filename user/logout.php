@@ -4,4 +4,3 @@
   session_unset();
   $_SESSION['page'] = 'login';
   header("Location: ./../");
-?>

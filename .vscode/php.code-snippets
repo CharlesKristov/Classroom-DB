@@ -3,10 +3,10 @@
     "prefix": "pprint",
     "body": [
       "echo '<pre>';",
-      "echo '--------------------';",
-      "echo '$1: '",
+      "echo '--------------------' . '<br />';",
+      "echo '$1: ' . '<br />';",
       "echo json_encode($1, JSON_PRETTY_PRINT);",
-      "echo '--------------------';",
+      "echo '<br />' . '--------------------';",
       "echo '</pre>';",
       "$0"
     ],

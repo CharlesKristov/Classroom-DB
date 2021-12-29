@@ -1,10 +1,12 @@
 # DB-WebApp
 
+![](./assets/login.jpeg)
+
 A project for DBMS course on Binus University.
 
 ## ERD Diagram
-<a href="https://lucid.app/lucidchart/e803c288-aad0-4268-bbab-7007388bd60f/edit?invitationId=inv_12158997-fda3-4caf-b31f-216c213d051a&page=0_0#" target="_blank">Lucid Chart -- ERD</a>
 
+[Lucid Chart -- ERD](https://lucid.app/lucidchart/e803c288-aad0-4268-bbab-7007388bd60f/edit?invitationId=inv_12158997-fda3-4caf-b31f-216c213d051a&page=0_0#)
 
 ## Tech Stack
 
@@ -46,25 +48,12 @@ Navigate to [localhost/DB-WebApp](http://localhost/DB-WebApp) and login with one
 
 ## Authors
 
-<table>
-  <tr>
-    <td align="middle"><img src="assets/charles.jpg"></td>
-    <td align="middle"><img src="assets/oliver.jpg"></td>
-    <td align="middle"><img src="assets/made.jpg"></td>
-  </tr>
-  <tr>
-     <td align="middle">Charles Christopher</td>
-     <td align="middle">Oliver Chico</td>
-     <td align="middle">Made Agustha I.S.</td>
-  </tr>
-  <tr>
-     <td align="middle">2440062924</td>
-     <td align="middle">2440055635</td>
-     <td align="middle">2440048970</td>
-  </tr>
-  <tr>
-     <td align="middle"><a href="https://github.com/CharlesKristov">@CharlesKristov</a></td>
-     <td align="middle"><a href="https://github.com/Oiko78">@Oiko78</a></td>
-     <td align="middle"><a href="https://www.github.com/agusthas">@agusthas</a></td>
-  </tr>
- </table>
+|   ![](./assets/charles.jpg)   | ![](./assets/oliver.jpg) | ![](./assets/made.jpg) |
+| :---------------------------: | :----------------------: | :--------------------: |
+|      Charles Christopher      |       Oliver Chico       |   Made Agustha I.S.    |
+|          2440062924           |        2440055635        |       2440048970       |
+| [@CharlesKristov][gh-charles] |   [@Oiko78][gh-chico]    |  [@agusthas][gh-made]  |
+
+[gh-chico]: https://github.com/Oiko78
+[gh-charles]: https://github.com/CharlesKristov
+[gh-made]: https://www.github.com/agusthas

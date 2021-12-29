@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 28, 2021 at 11:33 AM
+-- Generation Time: Dec 29, 2021 at 04:40 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.0
 
@@ -344,9 +344,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `first_name`, `last_name`, `dob`, `avatar`) VALUES
-(1, 'Charles', 'Christopher', '2002-09-20', 'https://i.pravatar.cc/32?img=63'),
-(2, 'Oliver', 'Chico', '2002-12-14', 'https://i.pravatar.cc/32?img=64'),
-(3, 'Made', 'Agustha', '1997-08-01', 'https://i.pravatar.cc/32?img=65'),
+(1, 'Charles', 'Christopher', '2002-09-20', 'https://stbm7resourcesprod.blob.core.windows.net/profilepicture/e37f6235-26f0-4f80-9f8f-956ffdf8eb66.jpg'),
+(2, 'Oliver', 'Chico', '2002-12-14', 'https://stbm7resourcesprod.blob.core.windows.net/profilepicture/8098b4a3-3bc7-4a51-a6e9-ad9c0455af8b.jpg'),
+(3, 'Made', 'Agustha', '1997-08-01', 'https://stbm7resourcesprod.blob.core.windows.net/profilepicture/77998c8f-7dfc-4f41-a5f9-38f1027b3ade.jpg'),
 (4, 'Rio', 'Nathaniel', '1996-10-23', 'https://i.pravatar.cc/32?img=66'),
 (5, 'Vinsen', 'Nawir', '2001-11-01', 'https://i.pravatar.cc/32?img=67'),
 (6, 'Jason', 'Harlim', '1997-08-06', 'https://i.pravatar.cc/32?img=68'),

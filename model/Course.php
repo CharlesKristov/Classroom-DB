@@ -15,7 +15,7 @@ class Course
       $statement->execute();
     } catch (PDOException $e) {
       echo $e;
-      return null;
+      return [];
     }
     return $statement->fetch(PDO::FETCH_ASSOC);
   }
@@ -27,7 +27,7 @@ class Course
       $statement->execute();
     } catch (PDOException $e) {
       echo $e;
-      return null;
+      return [];
     }
     return $statement->fetch(PDO::FETCH_ASSOC);
   }

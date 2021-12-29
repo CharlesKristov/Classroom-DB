@@ -27,7 +27,7 @@ class Classroom
       $statement->execute();
     } catch (PDOException $e) {
       echo $e;
-      return null;
+      return [];
     }
     return $statement->fetch(PDO::FETCH_ASSOC);
   }
@@ -39,7 +39,7 @@ class Classroom
       $statement->execute();
     } catch (PDOException $e) {
       echo $e;
-      return null;
+      return [];
     }
 
     return $statement->fetchAll(PDO::FETCH_ASSOC);

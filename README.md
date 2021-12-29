@@ -9,7 +9,7 @@ A project for DBMS course on Binus University.
 ## Tech Stack
 
 - Bootstrap 5
-- PHP
+- PHP (8.1)
 - MySQL
 - Apache
 

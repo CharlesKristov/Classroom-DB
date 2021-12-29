@@ -46,6 +46,25 @@ Navigate to [localhost/DB-WebApp](http://localhost/DB-WebApp) and login with one
 
 ## Authors
 
-- [@CharlesKristov](https://github.com/CharlesKristov) (Owner)
-- [@agusthas](https://www.github.com/agusthas) (Contributor)
-- [@Oiko78](https://github.com/Oiko78) (Contributor)
+<table>
+  <tr>
+    <td align="middle"><img src="https://stbm7resourcesprod.blob.core.windows.net/profilepicture/e37f6235-26f0-4f80-9f8f-956ffdf8eb66.jpg"></td>
+    <td align="middle"><img src="https://stbm7resourcesprod.blob.core.windows.net/profilepicture/8098b4a3-3bc7-4a51-a6e9-ad9c0455af8b.jpg"></td>
+    <td align="middle"><img src="https://stbm7resourcesprod.blob.core.windows.net/profilepicture/77998c8f-7dfc-4f41-a5f9-38f1027b3ade.jpg"></td>
+  </tr>
+  <tr>
+     <td align="middle">Charles Christopher</td>
+     <td align="middle">Oliver Chico</td>
+     <td align="middle">Made Agustha I.S.</td>
+  </tr>
+  <tr>
+     <td align="middle">2440062924</td>
+     <td align="middle">2440055635</td>
+     <td align="middle">2440048970</td>
+  </tr>
+  <tr>
+     <td align="middle"><a href="https://github.com/CharlesKristov">@CharlesKristov</a></td>
+     <td align="middle"><a href="https://github.com/Oiko78">@Oiko78</a></td>
+     <td align="middle"><a href="https://www.github.com/agusthas">@agusthas</a></td>
+  </tr>
+ </table>

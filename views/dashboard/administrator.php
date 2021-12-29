@@ -1,7 +1,7 @@
 <?php
 global $db;
 
-$administrator = isset($_SESSION['administrator']) ? 'form' : 'manage';
+$administrator = isset($_GET['administrator']) ? $_GET['administrator'] : 'manage';
 
 $statement = $db->prepare("SHOW TABLES");
 $statement->execute();

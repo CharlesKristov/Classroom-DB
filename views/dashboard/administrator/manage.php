@@ -13,13 +13,13 @@ global $tableList;
     <div class="accordion-item">
       <h2 class="accordion-header" id="<?= 'heading' . $index ?>">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= 'collapse' . $index ?>">
-          <?= $tableName ?>
+          <?= ucwords(join(" ", explode("_", $tableName))) ?>
         </button>
       </h2>
       <div id="<?= 'collapse' . $index ?>" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <div class="d-grid gap-2 d-md-block">
-            <a href="" class="btn btn-success">Insert</a>
+            <a class="btn btn-success" onclick="insertRow('<?= $tableName ?>')">Insert</a>
           </div>
           <div class="scroll-horizontal">
             <table id="table-<?= $tableName; ?>" class="table table-responsive">
@@ -39,8 +39,8 @@ global $tableList;
                       <td><?= $data ?></td>
                     <?php } ?>
                     <td>
-                      <a class="btn btn-warning" type="button">Edit</a>
-                      <a class="btn btn-danger" type="button" onclick="deleteRow('<?= $tableName ?>', this.parentNode.parentNode)">Delete</a>
+                      <button type="button" class="btn btn-warning m-2" onclick="editRow('<?= $tableName ?>', this.parentNode.parentNode)">Edit</button>
+                      <button type="button" class="btn btn-danger m-2" onclick="deleteRow('<?= $tableName ?>', this.parentNode.parentNode)">Delete</button>
                     </td>
                   </tr>
                 <?php } ?>
@@ -125,7 +125,30 @@ global $tableList;
     httpc.send(data);
   }
 
-  const editRow = () => {}
+  const editRow = (table, element) => {
+    const datas = getData(table, element);
+    const data = new FormData();
+    data.append("table", datas['table']);
+    data.append("columns", datas['columns']);
+    data.append("row", datas['row']);
+    data.append("method", "edit");
+    // AJAX post request to form.php
+    const url = "views/dashboard/administrator/form.php";
+    const httpc = new XMLHttpRequest();
+    httpc.open("POST", url, true);
+    httpc.send(data);
+    // Redirect user to form.php
+    window.location.href = "./?dashboard=administrator&administrator=form";
+  }
 
-  const insertRow = () => {}
+  const insertRow = (table) => {
+    const data = new FormData();
+    data.append("table", table);
+    data.append("method", "insert");
+    const url = "views/dashboard/administrator/form.php";
+    const httpc = new XMLHttpRequest();
+    httpc.open("POST", url, true);
+    httpc.send(data);
+    window.location.href = "./?dashboard=administrator&administrator=form";
+  }
 </script>

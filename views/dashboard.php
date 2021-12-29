@@ -47,7 +47,7 @@ $dashboard = isset($_GET['dashboard']) ? $_GET['dashboard'] : ($role == 'admin' 
         </li>
       <?php } else { ?>
         <li class="nav-item">
-          <a href="./?dashboard=administrator" class="nav-link <?= $dashboard == 'administrator' ? 'active' : 'text-white'; ?>" aria-current="page">
+          <a href="./?dashboard=administrator&administrator=manage" class="nav-link <?= $dashboard == 'administrator' ? 'active' : 'text-white'; ?>" aria-current="page">
             <span>🛠</span>
             Administrator
           </a>

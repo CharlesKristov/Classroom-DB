@@ -22,7 +22,7 @@
             <a href="" class="btn btn-success">Insert</a>
           </div>
           <div class="scroll-horizontal">
-            <table class="table table-responsive">
+            <table id="table-<?=$tableName;?>" class="table table-responsive">
               <thead>
                 <tr>
                   <?php foreach($table[$tableName][0] as $tableColumn => $value) { ?>
@@ -39,7 +39,7 @@
                       <?php } ?>
                       <td>
                         <a class="btn btn-warning" type="button">Edit</a>
-                        <a class="btn btn-danger" type="button">Delete</a>
+                        <a class="btn btn-danger" type="button" onclick="deleteRow('<?=$tableName?>', this.parentNode.parentNode)">Delete</a>
                       </td>
                     </tr>
                   <?php } ?>
@@ -51,3 +51,49 @@
     </div>
   <?php } ?>
 </div>
+<script>
+  const getData = (table, element) => {
+    const index = Array.from(element.parentNode.children).indexOf(element);
+    const tableEle = document.querySelector(`#table-${table}`);
+    const columnEle = tableEle.querySelector("thead > tr").children;
+    const rowEle = tableEle.querySelector(`tbody tr:nth-child(${index + 1})`).children;
+    const columns = [];
+    const row = [];
+    for(let i = 0; i < columnEle.length - 1; i++) {
+      columns.push(columnEle.item(i).textContent);
+    }
+    for(let i = 0; i < rowEle.length - 1; i++) {
+      row.push(rowEle.item(i).textContent);
+    }
+    return {table, columns, row};
+  }
+
+  const deleteRowEle = (table, element) => {
+    const index = Array.from(element.parentNode.children).indexOf(element);
+    const tableEle = document.querySelector(`#table-${table}`);
+    const rowEle = tableEle.querySelector(`tbody tr:nth-child(${index + 1})`);
+    rowEle.remove();
+  }
+
+  const deleteRow = (table, element) => {
+    if(!confirm("Are you sure you want to delete this row?"))
+      return;
+    
+    const datas = getData(table, element);
+    const data = new FormData();
+    data.append("table", datas['table']);
+    data.append("columns", datas['columns']);
+    data.append("row", datas['row']);
+    const url = "script/php/deleteRow.php";
+    const httpc = new XMLHttpRequest();
+    httpc.addEventListener("load", function() {
+      this.responseText ? deleteRowEle(table, element) : alert("error!");
+    });
+    httpc.open("POST", url, true);
+    httpc.send(data);
+  }
+
+  const editRow = () => {}
+
+  const insertRow = () => {}
+</script>

@@ -1,30 +1,29 @@
 <?php
 global $student, $teacher, $role, $course, $kelas;
 $courses = $role == 'student' ? $student->getCourses($user['id']) : $teacher->getCourses($user['id']);
+if ($courses) {
+  foreach ($courses as $current_course) {
+    $class = $kelas->getClass($current_course['class_id'], true);
+    extract($course->getCourse($current_course['id']));
 
-foreach ($courses as $current_course) {
-  $class = $kelas->getClass($current_course['class_id'], true);
-  extract($course->getCourse($current_course['id']));
+    $credit = $credit;
+    $course_name = $name;
+    $classroom_code = sprintf("%s%02d", strtoupper(substr($class['classroom_type'], 0, 3)), $class['classroom_number']); //LEC001
+    $classroom_type = substr($classroom_code, 0, 3);
+    $course_code = implode("", array_map(function ($word) {
+      return strtoupper($word[0]);
+    }, explode(" ", $course_name))) . ' - ' . $classroom_type;
 
-  $credit = $credit;
-  $course_name = $name;
-  $classroom_code = sprintf("%s%02d", strtoupper(substr($class['classroom_type'], 0, 3)), $class['classroom_number']); //LEC001
-  $classroom_type = substr($classroom_code, 0, 3);
-  $course_code = implode("", array_map(function ($word) {
-    return strtoupper($word[0]);
-  }, explode(" ", $course_name))) . ' - ' . $classroom_type;
-
-  $groupByType[$classroom_type][] = ['credit' => $credit, 'course_name' => $course_name, 'classroom_code' => $classroom_code, 'classroom_type' => $classroom_type, 'course_code' => $course_code];
+    $groupByType[$classroom_type][] = ['credit' => $credit, 'course_name' => $course_name, 'classroom_code' => $classroom_code, 'classroom_type' => $classroom_type, 'course_code' => $course_code];
+  }
+  $course_type = isset($_GET['course_type']) ? $_GET['course_type'] : array_key_first($groupByType);
 }
 
-$course_type = isset($_GET['course_type']) ? $_GET['course_type'] : array_key_first($groupByType);
 ?>
-
-
-
 <!-- Courses -->
 <h1 class="text-dark fs-2">📚 Your Courses</h1>
 <hr>
+
 
 <div class="tab-navigation d-flex gap-3 mb-4 border-bottom">
   <a href="./?dashboard=course&course_type=LAB" class="p-3 link-dark text-decoration-none border-bottom border-5 <?= $course_type == 'LAB' ? 'border-warning' : 'border-body' ?>">LAB</a>
@@ -48,3 +47,14 @@ $course_type = isset($_GET['course_type']) ? $_GET['course_type'] : array_key_fi
     </div>
   <?php } ?>
 </div>
+
+<?php
+if (!$courses) { ?>
+  <div>
+    <div class="card text-white bg-danger mt-4">
+      <div class="card-body">
+        <h5 class="card-title m-0"><span style="color: transparent; text-shadow: 0 0 0 white;">❌</span> You have no course </h5>
+      </div>
+    </div>
+  </div>
+<?php } ?>

@@ -48,9 +48,9 @@ Navigate to [localhost/DB-WebApp](http://localhost/DB-WebApp) and login with one
 
 <table>
   <tr>
-    <td align="middle"><img src="https://stbm7resourcesprod.blob.core.windows.net/profilepicture/e37f6235-26f0-4f80-9f8f-956ffdf8eb66.jpg"></td>
-    <td align="middle"><img src="https://stbm7resourcesprod.blob.core.windows.net/profilepicture/8098b4a3-3bc7-4a51-a6e9-ad9c0455af8b.jpg"></td>
-    <td align="middle"><img src="https://stbm7resourcesprod.blob.core.windows.net/profilepicture/77998c8f-7dfc-4f41-a5f9-38f1027b3ade.jpg"></td>
+    <td align="middle"><img src="assets/charles.jpg"></td>
+    <td align="middle"><img src="assets/oliver.jpg"></td>
+    <td align="middle"><img src="assets/made.jpg"></td>
   </tr>
   <tr>
      <td align="middle">Charles Christopher</td>

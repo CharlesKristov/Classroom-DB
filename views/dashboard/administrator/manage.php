@@ -53,6 +53,13 @@ global $tableList;
   <?php } ?>
 </div>
 <script>
+  /**
+   *  
+   * Function to get data from table
+   * author: @Oiko78
+   * @param {string} table
+   * @param {HTMLElement} element
+   */
   const getData = (table, element) => {
     const index = Array.from(element.parentNode.children).indexOf(element);
     const tableEle = document.querySelector(`#table-${table}`);
@@ -73,6 +80,14 @@ global $tableList;
     };
   }
 
+
+  /**
+   *  
+   * Function to delete row element from table
+   * author: @Oiko78
+   * @param {string} table
+   * @param {HTMLElement} element
+   */
   const deleteRowEle = (table, element) => {
     const index = Array.from(element.parentNode.children).indexOf(element);
     const tableEle = document.querySelector(`#table-${table}`);
@@ -80,6 +95,13 @@ global $tableList;
     rowEle.remove();
   }
 
+  /**
+   *  
+   * AJAX request to delete row
+   * author: @Oiko78
+   * @param {string} table
+   * @param {HTMLElement} element
+   */
   const deleteRow = (table, element) => {
     if (!confirm("Are you sure you want to delete this row?"))
       return;
@@ -92,7 +114,12 @@ global $tableList;
     const url = "script/php/deleteRow.php";
     const httpc = new XMLHttpRequest();
     httpc.addEventListener("load", function() {
-      this.responseText ? deleteRowEle(table, element) : alert("error!");
+      if (this.responseText !== "") {
+        deleteRowEle(table, element);
+      } else {
+        alert("data is not exist! please reload the page.");
+        window.location.reload(true);
+      }
     });
     httpc.open("POST", url, true);
     httpc.send(data);

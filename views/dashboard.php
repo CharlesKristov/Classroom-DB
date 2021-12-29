@@ -16,8 +16,27 @@ $dashboard = isset($_GET['dashboard']) ? $_GET['dashboard'] : ($role == 'admin' 
 <div class="d-flex">
 
   <!-- Sidebar -->
-  <div class="min-vh-100 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-    <div class="border p-2 pb-0 bg-secondary mb-3 rounded">
+  <div class="min-vh-100 d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="<?php echo $role != 'admin' ? 'width: 250px;' : '' ?>">
+    <div class=" border p-2 pb-0 bg-secondary mb-3 rounded">
+      <div class="d-flex justify-content-center align-items-center mb-2 <?= $role == 'admin' ? '' : '' ?>">
+        <?php if ($role == 'admin') { ?>
+          <div>
+            <img src="https://stbm7resourcesprod.blob.core.windows.net/profilepicture/e37f6235-26f0-4f80-9f8f-956ffdf8eb66.jpg" alt=" avatar" class="text-center rounded" />
+            <h5 class="text-center">Charles</h5>
+          </div>
+          <div>
+            <img src="https://stbm7resourcesprod.blob.core.windows.net/profilepicture/8098b4a3-3bc7-4a51-a6e9-ad9c0455af8b.jpg" alt="avatar" class="text-center rounded" />
+            <h5 class="text-center">Chico</h5>
+          </div>
+          <div>
+            <img src="https://stbm7resourcesprod.blob.core.windows.net/profilepicture/77998c8f-7dfc-4f41-a5f9-38f1027b3ade.jpg" alt="avatar" class="text-center rounded" />
+            <h5 class="text-center">Made</h5>
+          </div>
+        <?php } else { ?>
+          <img src="<?= $role == 'admin' ? 'https://stbm7resourcesprod.blob.core.windows.net/profilepicture/e37f6235-26f0-4f80-9f8f-956ffdf8eb66.jpg' : $user['avatar'] ?>" alt="avatar" class="text-center rounded" />
+        <?php } ?>
+
+      </div>
       <p class="fs-4"><?= $emoji[$role] . " " . ucfirst($role); ?></p>
       <ul class="list-unstyled pb-1 small">
         <li><?php if ($role != 'admin') echo $user['first_name'] . " " . $user['last_name']; ?></li>
@@ -59,12 +78,12 @@ $dashboard = isset($_GET['dashboard']) ? $_GET['dashboard'] : ($role == 'admin' 
 
   <div class="w-100">
     <!-- Header -->
-    <div class="d-flex align-items-center w-100 justify-content-between px-3 py-2 border-bottom">
+    <div class="d-flex align-items-center w-100 justify-content-between px-3 py-3 border-bottom">
       <h1 class="text-dark fs-4 mb-0">Welcome, <?= $role == 'admin' ? "Admin" : $user['first_name']; ?>!</h1>
       <div id="time-now" class="text-secondary fs-6 mb-0"></div>
       <div class="dropdown text-end">
         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="<?= $role == 'admin' ? 'https://i.pravatar.cc/32'  : $user['avatar'] ?>" alt="avatar" class="rounded-circle">
+          Menu
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
           <li><a class="dropdown-item" href="user/logout.php">Sign out</a></li>

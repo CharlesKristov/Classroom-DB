@@ -28,7 +28,7 @@ global $tableList;
                   <?php foreach ($table[$tableName][0] as $tableColumn => $value) { ?>
                     <th scope="col"><?= $tableColumn ?></th>
                   <?php } ?>
-                  <th scope="col" style="width: 14%;"></th>
+                  <th scope="col" style="width: 20%;"></th>
                   </th>
                 </tr>
               </thead>
@@ -39,8 +39,8 @@ global $tableList;
                       <td><?= $data ?></td>
                     <?php } ?>
                     <td>
-                      <button type="button" class="btn btn-warning m-2" onclick="editRow('<?= $tableName ?>', this.parentNode.parentNode)">Edit</button>
-                      <button type="button" class="btn btn-danger m-2" onclick="deleteRow('<?= $tableName ?>', this.parentNode.parentNode)">Delete</button>
+                      <button type="button" class="btn btn-warning m-1" onclick="editRow('<?= $tableName ?>', this.parentNode.parentNode)">Edit</button>
+                      <button type="button" class="btn btn-danger m-1" onclick="deleteRow('<?= $tableName ?>', this.parentNode.parentNode)">Delete</button>
                     </td>
                   </tr>
                 <?php } ?>

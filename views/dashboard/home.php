@@ -7,7 +7,7 @@ $organizations = $role == 'student' ? $organization->getOrganizations($user['id'
 $ongoing_class = $role == 'student' ? $student->getOngoingClass($user['id']) : $teacher->getOngoingClass($user['id']);
 
 if ($ongoing_class) {
-  $ongoing_class = $kelas->getClass($ongoing_class);
+  $ongoing_class = $kelas->getClass($ongoing_class['id']);
   $ongoing_class_type = $kelas->getClassType($ongoing_class['type_id'])['name'];
   $ongoing_classroom = $classroom->getClassroom($ongoing_class['classroom_id']);
   $ongoing_classroom_code = sprintf("%s%02d", strtoupper(substr($classroom->getClassroomType($ongoing_classroom['type_id'])['name'], 0, 3)), $ongoing_classroom['id']);

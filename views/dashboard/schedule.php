@@ -6,15 +6,17 @@ $classes = $role == 'student' ? $student->getClasses($user['id']) : $teacher->ge
 foreach ($classes as $class) {
   $groupByMonth[(new DateTime($class['time']))->format('n')][] = $class;
 }
-$months = array_keys($groupByMonth); // [1,2,3,...,12] 
-sort($months);
-$current_month = isset($_GET['month']) ? $_GET['month'] : array_key_first($groupByMonth);
-$newClass = array_map(function ($class) {
-  global $kelas;
-  $class = $kelas->getClass($class['id'], true);
-  $classroom_code = sprintf("%s%02d", strtoupper(substr($class['classroom_type'], 0, 3)), $class['classroom_number']); //LEC001
-  return array_merge($class, array('code' => $classroom_code));
-}, $groupByMonth[$current_month]);
+if ($groupByMonth) {
+  $months = array_keys($groupByMonth); // [1,2,3,...,12]
+  sort($months);
+  $current_month = isset($_GET['month']) ? $_GET['month'] : array_key_first($groupByMonth);
+  $newClass = array_map(function ($class) {
+    global $kelas;
+    $class = $kelas->getClass($class['id'], true);
+    $classroom_code = sprintf("%s%02d", strtoupper(substr($class['classroom_type'], 0, 3)), $class['classroom_number']); //LEC001
+    return array_merge($class, array('code' => $classroom_code));
+  }, $groupByMonth[$current_month]);
+}
 ?>
 
 <!-- Schedule -->
@@ -22,20 +24,24 @@ $newClass = array_map(function ($class) {
 <hr>
 
 <div class="mb-4">
-  <div class="dropdown mb-3">
-    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      <?= date("F", strtotime($groupByMonth[$current_month][0]['time'])) ?>
-    </button>
-    <ul id="month-dropdown" class="dropdown-menu dropdown-menu-dark dropdown-menu-macos mx-0 border-0 shadow" style="width: 220px;">
-      <?php
-      foreach ($months as $month) {
-        $month_str = date("F", strtotime($groupByMonth[$month][0]['time']));
-        $month_int = date("n", strtotime($groupByMonth[$month][0]['time']));
-      ?>
-        <li><a class="dropdown-item" style="cursor: pointer;" href="./?dashboard=schedule&month=<?= $month_int ?>"><?= $month_str ?></a></li>
-      <?php } ?>
-    </ul>
-  </div>
+  <?php if (!$months) { ?>
+    <button type="button" class="btn btn-danger">No Schedule</button>
+  <?php } else { ?>
+    <div class="dropdown mb-3">
+      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <?= date("F", strtotime($groupByMonth[$current_month][0]['time'])) ?>
+      </button>
+      <ul id="month-dropdown" class="dropdown-menu dropdown-menu-dark dropdown-menu-macos mx-0 border-0 shadow" style="width: 220px;">
+        <?php
+        foreach ($months as $month) {
+          $month_str = date("F", strtotime($groupByMonth[$month][0]['time']));
+          $month_int = date("n", strtotime($groupByMonth[$month][0]['time']));
+        ?>
+          <li><a class="dropdown-item" style="cursor: pointer;" href="./?dashboard=schedule&month=<?= $month_int ?>"><?= $month_str ?></a></li>
+        <?php } ?>
+      </ul>
+    </div>
+  <?php } ?>
 
   <div>
     <?php

@@ -55,8 +55,8 @@ if (isset($_POST) && count($_POST) !== 0) {
 
   $mergedArray = array_map(function ($type) {
     global $meta, $row;
-
-    $index = end(array_keys(array_column($meta, "COLUMN_NAME"), $type['Field']));
+    $search = array_keys(array_column($meta, "COLUMN_NAME"), $type['Field']);
+    $index = end($search);
     $referenced_table = $meta[$index]['REFERENCED_TABLE_NAME'];
 
     return array_merge(
@@ -67,7 +67,7 @@ if (isset($_POST) && count($_POST) !== 0) {
           $type['Field'],
           $type['Type'],
           $type['Key'],
-          $row[$type['Field']],
+          $row[$type['Field']] ?? "",
           getReferencedRow($referenced_table)
         ],
       )

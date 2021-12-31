@@ -88,19 +88,19 @@ if (isset($_POST) && count($_POST) !== 0) {
       <?php if (str_contains($column['type'], 'varchar')) { ?>
         <div class="mb-3">
           <label for=<?= $column['name'] ?> class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?> </label>
-          <input type="text" class="form-control" id=<?= $column['name'] ?> value=<?= $column['value'] ?>>
+          <input type="text" class="form-control" name=<?= $column['name'] ?> value=<?= $column['value'] ?>>
         </div>
       <?php } ?>
       <?php if (str_contains($column['type'], 'int')) { ?>
         <?php if ($column['key'] === 'PRI' && $column['reference_table'] === null) { ?>
           <div class="mb-3">
             <label for=<?= $column['name'] ?> class="form-label"><?= strtoupper(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
-            <input type="text" readonly class="form-control" style="pointer-events: none;" id=<?= $column['name'] ?> value=<?= $column['value'] ?>>
+            <input type="text" readonly class="form-control" style="pointer-events: none;" name=<?= $column['name'] ?> value=<?= $column['value'] ?>>
           </div>
         <?php } else if (($column['key'] === 'MUL' || $column['key'] === 'PRI') && $column['reference_table'] !== null) { ?>
           <div class="mb-3">
             <label for=<?= $column['name'] ?> class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
-            <select class="form-select" id=<?= $column['name'] ?>>
+            <select class="form-select" name=<?= $column['name'] ?>>
               <?php foreach ($column['rows'] as $row) { ?>
                 <?php $name = array_key_exists("first_name", $row) ? ($row['first_name'] . " " . $row['last_name']) : ($row['title'] ?? $row['id'] ?? $row['name']); ?>
                 <option class='<?= $column['value'] == $row['id'] ? "text-success" : "" ?>' value='<?= $row['id'] ?>' data-row='<?= json_encode($row) ?>' <?= $column['value'] == $row['id'] ? 'selected' : '' ?>><?= $name; ?></option>
@@ -111,21 +111,21 @@ if (isset($_POST) && count($_POST) !== 0) {
         <?php } else { ?>
           <div class="mb-3">
             <label for=<?= $column['name'] ?> class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
-            <input type="number" min="0" class="form-control" id=<?= $column['name'] ?> value=<?= $column['value'] ?>>
+            <input type="number" min="0" class="form-control" name=<?= $column['name'] ?> value=<?= $column['value'] ?>>
           </div>
         <?php } ?>
       <?php } ?>
       <?php if (str_contains($column['type'], 'date') && !str_contains($column['type'], 'datetime')) { ?>
         <div class="mb-3">
           <label for=<?= $column['name'] ?> class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
-          <input type="date" id=<?= $column['name'] ?> style="width:100%;">
+          <input type="date" name=<?= $column['name'] ?> style="width:100%;">
         </div>
       <?php } ?>
 
       <?php if (str_contains($column['type'], 'datetime')) { ?>
         <div class="mb-3">
           <label for=<?= $column['name'] ?> class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
-          <input type="datetime-local" min="2020-12-31T00:00:00" id=<?= $column['name'] ?> style="width:100%;">
+          <input type="datetime-local" min="2020-12-31T00:00:00" name=<?= $column['name'] ?> style="width:100%;">
         </div>
       <?php } ?>
     <?php } ?>

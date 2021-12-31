@@ -102,7 +102,7 @@ if (isset($_POST) && count($_POST) !== 0) {
             <label for=<?= $column['name'] ?> class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
             <select class="form-select" id=<?= $column['name'] ?>>
               <?php foreach ($column['rows'] as $row) { ?>
-                <?php $name = $row['name'] ? $row['name'] : ($row['first_name'] ? $row['first_name'] . " " . $row['last_name'] : ($row['title'] ?  $row['title'] :  $row['id'])); ?>
+                <?php $name = array_key_exists("first_name", $row) ? ($row['first_name'] . " " . $row['last_name']) : ($row['title'] ?? $row['id'] ?? $row['name']); ?>
                 <option class='<?= $column['value'] == $row['id'] ? "text-success" : "" ?>' value='<?= $row['id'] ?>' data-row='<?= json_encode($row) ?>' <?= $column['value'] == $row['id'] ? 'selected' : '' ?>><?= $name; ?></option>
               <?php } ?>
             </select>

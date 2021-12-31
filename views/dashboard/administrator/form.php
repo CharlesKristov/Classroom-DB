@@ -1,6 +1,6 @@
 <?php
-session_start();
 if (isset($_POST) && count($_POST) !== 0) {
+  session_start();
   $_SESSION['administrator'] = $_POST;
 } else {
   $table = isset($_SESSION['administrator']['table']) ? $_SESSION['administrator']['table'] : 'student';
@@ -58,7 +58,6 @@ if (isset($_POST) && count($_POST) !== 0) {
     $search = array_keys(array_column($meta, "COLUMN_NAME"), $type['Field']);
     $index = end($search);
     $referenced_table = $meta[$index]['REFERENCED_TABLE_NAME'];
-
     return array_merge(
       array_combine(
         ["reference_table", "name", "type", "key", "value", "rows"],

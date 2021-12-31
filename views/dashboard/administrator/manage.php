@@ -1,5 +1,8 @@
 <?php
 global $tableList;
+if (!isset($_GET['administrator']) || (isset($_GET['administrator']) && $_GET['administrator'] === "manage")) {
+  unset($_SESSION['administrator']);
+}
 ?>
 <!-- Administrator -->
 <h1 class="text-dark fs-2">🔨 Manage</h1>
@@ -135,20 +138,26 @@ global $tableList;
     // AJAX post request to form.php
     const url = "views/dashboard/administrator/form.php";
     const httpc = new XMLHttpRequest();
+    // Redirect user to form.php after ajax request success 
+    httpc.addEventListener("load", function() {
+      window.location.href = "./?dashboard=administrator&administrator=form";
+    })
     httpc.open("POST", url, true);
     httpc.send(data);
-    // Redirect user to form.php
-    window.location.href = "./?dashboard=administrator&administrator=form";
   }
 
   const insertRow = (table) => {
     const data = new FormData();
     data.append("table", table);
     data.append("method", "insert");
+    // AJAX post request to form.php
     const url = "views/dashboard/administrator/form.php";
     const httpc = new XMLHttpRequest();
+    // Redirect user to form.php after ajax request success 
+    httpc.addEventListener("load", function() {
+      window.location.href = "./?dashboard=administrator&administrator=form";
+    })
     httpc.open("POST", url, true);
     httpc.send(data);
-    window.location.href = "./?dashboard=administrator&administrator=form";
   }
 </script>

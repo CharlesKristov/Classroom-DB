@@ -7,7 +7,7 @@ if (isset($_POST) && count($_POST) !== 0) {
   $columns = isset($_SESSION['administrator']['columns']) ?  explode(',', $_SESSION['administrator']['columns']) : [];
   $row = isset($_SESSION['administrator']['row']) ?  explode(',', $_SESSION['administrator']['row']) : [];
   $row = array_combine($columns, $row);
-  $method = isset($_SESSION['administrator']['method']) ?  explode(',', $_SESSION['administrator']['method']) : "insert";
+  $method = isset($_SESSION['administrator']['method']) ?  $_SESSION['administrator']['method'] : "insert";
   $db = (new Database())->connect();
 
   function getMeta($table)
@@ -77,7 +77,7 @@ if (isset($_POST) && count($_POST) !== 0) {
   <div class="mb-4">
     <a href="http://localhost/DB-WebApp?dashboard=administrator&administrator=manage" class="btn btn-outline-primary">⬅ Back</a>
   </div>
-  <form action="script/php/insertForm.php" method="POST">
+  <form action="script/php/<?= $method; ?>Form.php" method="POST">
     <header class="mb-3">
       <h1 class="fs-3">📄 <?= ucfirst($table) ?></h1>
       <span class="text-secondary fs-6 fst-italic">Fill in the form below to insert a new data</span>
@@ -102,7 +102,7 @@ if (isset($_POST) && count($_POST) !== 0) {
             <label for=<?= $column['name'] ?> class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
             <select class="form-select" name=<?= $column['name'] ?>>
               <?php foreach ($column['rows'] as $row) { ?>
-                <?php $name = array_key_exists("first_name", $row) ? ($row['first_name'] . " " . $row['last_name']) : ($row['title'] ?? $row['id'] ?? $row['name']); ?>
+                <?php $name = array_key_exists("first_name", $row) ? ($row['first_name'] . " " . $row['last_name']) : ($row['title'] ?? $row['name'] ?? $row['id']); ?>
                 <option class='<?= $column['value'] == $row['id'] ? "text-success" : "" ?>' value='<?= $row['id'] ?>' data-row='<?= json_encode($row) ?>' <?= $column['value'] == $row['id'] ? 'selected' : '' ?>><?= $name; ?></option>
               <?php } ?>
             </select>
@@ -118,20 +118,20 @@ if (isset($_POST) && count($_POST) !== 0) {
       <?php if (str_contains($column['type'], 'date') && !str_contains($column['type'], 'datetime')) { ?>
         <div class="mb-3">
           <label for=<?= $column['name'] ?> class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
-          <input type="date" name=<?= $column['name'] ?> style="width:100%;">
+          <input type="date" name=<?= $column['name'] ?> style="width:100%;" value=<?= $column['value'] ?>>
         </div>
       <?php } ?>
 
       <?php if (str_contains($column['type'], 'datetime')) { ?>
         <div class="mb-3">
           <label for=<?= $column['name'] ?> class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
-          <input type="datetime-local" min="2020-12-31T00:00:00" name=<?= $column['name'] ?> style="width:100%;">
+          <input type="datetime-local" min="2020-12-31T00:00:00" name=<?= $column['name'] ?> style="width:100%;" value=<?= str_replace(" ", "T", $column['value']) ?>>
         </div>
       <?php } ?>
     <?php } ?>
 
     <div class="d-flex justify-content-end">
-      <button type="submit" class="btn btn-success m-2" onclick="insertForm();">Add</button>
+      <button type="submit" class="btn btn-success m-2" onclick="return confirmButton();">Confirm</button>
       <button type="reset" class="btn btn-danger m-2">Clear</button>
     </div>
   </form>
@@ -152,4 +152,19 @@ if (isset($_POST) && count($_POST) !== 0) {
       blockTag.innerHTML = prettyPrintJson.toHtml(selected);
     })
   })
+
+  function confirmButton() {
+    if (!confirm("proceed?")) {
+      return false;
+    }
+    return true;
+  }
+</script>
+<script>
+  <?php
+  if (isset($_SESSION['administrator']['error'])) {
+    echo 'alert("' . $_SESSION['administrator']['error'] . '")';
+    unset($_SESSION['administrator']['error']);
+  }
+  ?>
 </script>

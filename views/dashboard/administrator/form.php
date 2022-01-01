@@ -87,14 +87,14 @@ if (isset($_POST) && count($_POST) !== 0) {
       <?php if (strpos($column['type'], 'varchar') !== false) { ?>
         <div class="mb-3">
           <label for="<?= $column['name'] ?>" class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] !== null ? $column['reference_table'] : $column['name']))) ?> </label>
-          <input type="text" class="form-control" name="<?= $column['name'] ?>" value="<?= $column['value'] ?>">
+          <input type="text" class="form-control" name="<?= $column['name'] ?>" value="<?= $column['value'] ?>" required>
         </div>
       <?php } ?>
       <?php if (strpos($column['type'], 'int') !== false) { ?>
         <?php if ($column['key'] === 'PRI' && $column['reference_table'] === null) { ?>
           <div class="mb-3">
             <label for="<?= $column['name'] ?>" class="form-label"><?= strtoupper(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
-            <input type="text" readonly class="form-control" style="pointer-events: none;" name="<?= $column['name'] ?>" value=<?= $column['value'] ?>>
+            <input type="text" readonly class="form-control" style="pointer-events: none;" name="<?= $column['name'] ?>" value=<?= $column['value'] ?> required>
           </div>
         <?php } else if (($column['key'] === 'MUL' || $column['key'] === 'PRI') && $column['reference_table'] !== null) { ?>
           <div class="mb-3">

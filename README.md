@@ -1,12 +1,16 @@
 # DB-WebApp
 
+[:tada: Click here to see our live demo!](https://dbwebapptest.000webhostapp.com/)
+
 ![](./assets/login.jpeg)
 
 A project for DBMS course on Binus University.
 
 ## ERD Diagram
 
-[Lucid Chart -- ERD](https://lucid.app/lucidchart/e803c288-aad0-4268-bbab-7007388bd60f/edit?invitationId=inv_12158997-fda3-4caf-b31f-216c213d051a&page=0_0#)
+|                                                                 ![](./assets/erd.png)                                                                 |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [Lucid Chart](https://lucid.app/lucidchart/e803c288-aad0-4268-bbab-7007388bd60f/edit?invitationId=inv_12158997-fda3-4caf-b31f-216c213d051a&page=0_0#) |
 
 ## Tech Stack
 

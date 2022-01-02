@@ -100,7 +100,7 @@ if ($ongoing_class) {
   <div class="border p-4 flex-fill rounded py-4">
     <h2 class="fs-4 px-3">Classroom List</h2>
     <hr>
-    <?php if (!$organizations) { ?>
+    <?php if (!$classrooms) { ?>
       <div>
         <div class="card bg-light ">
           <div class="card-body">

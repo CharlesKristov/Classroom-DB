@@ -1,6 +1,6 @@
 # DB-WebApp
 
-[:tada: Click here to see our live demo!](https://dbwebapptest.000webhostapp.com/)
+[:tada: Click here to see our live demo!](https://classroom-db.000webhostapp.com/)
 
 ![](./assets/login.jpeg)
 

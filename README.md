@@ -39,6 +39,7 @@ A project for DBMS course on Binus University.
 To make life easier, make sure to put the cloned project directory in `htdocs` folder. This can be found in:
 
 - **Windows** : `C:/xampp/htdocs`
+- **MAC**: _please read the documentation on where `htdocs` folder is_
 - **Linux** : `/opt/lampp/htdocs`
 
 ### Database setup

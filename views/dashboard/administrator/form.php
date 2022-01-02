@@ -114,17 +114,18 @@ if (isset($_POST) && count($_POST) !== 0) {
           </div>
         <?php } ?>
       <?php } ?>
-      <?php if (strpos($column['type'], 'date') && !strpos($column['type'], 'datetime')) { ?>
-        <div class=" mb-3">
-          <label for="<?= $column['name'] ?>" class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
-          <input type="date" name="<?= $column['name'] ?>" style="width:100%;" value="<?= $column['value'] ?>">
-        </div>
-      <?php } ?>
 
-      <?php if (strpos($column['type'], 'datetime')) { ?>
+      <?php if ($column['type'] === 'datetime') { ?>
         <div class="mb-3">
           <label for="<?= $column['name'] ?>" class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
           <input type="datetime-local" min="2020-12-31T00:00:00" name="<?= $column['name'] ?>" style="width:100%;" value="<?= str_replace(" ", "T", $column['value']) ?>">
+        </div>
+      <?php } ?>
+
+      <?php if ($column['type'] === 'date') { ?>
+        <div class=" mb-3">
+          <label for="<?= $column['name'] ?>" class="form-label"><?= ucwords(join(" ", explode("_", $column['reference_table'] ? $column['reference_table'] : $column['name']))) ?></label>
+          <input type="date" name="<?= $column['name'] ?>" style="width:100%;" value="<?= $column['value'] ?>">
         </div>
       <?php } ?>
     <?php } ?>

@@ -16,7 +16,7 @@ if ($courses) {
 
     $groupByType[$classroom_type][] = ['credit' => $credit, 'course_name' => $course_name, 'classroom_code' => $classroom_code, 'classroom_type' => $classroom_type, 'course_code' => $course_code];
   }
-  $course_type = isset($_GET['course_type']) ? $_GET['course_type'] : array_key_first($groupByType);
+  $course_type = isset($_GET['course_type']) ? (in_array($_GET['course_type'], array_keys($groupByType)) ? $_GET['course_type'] : array_key_first($groupByType)) : array_key_first($groupByType);
 }
 
 ?>
